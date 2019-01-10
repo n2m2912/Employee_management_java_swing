@@ -38,17 +38,16 @@ public class CertificatesBLL {
             return 1;  // thanh cong 
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Thêm thất bại");
+            JOptionPane.showMessageDialog(null, "Thêm  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
     public int editCertificatesDAL(Certificates certificatess) {
         try {
             dal.editCertificates(certificatess);
-            JOptionPane.showMessageDialog(null, "Sửa thành công");
             return 1;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sửa thất bại");
+            JOptionPane.showMessageDialog(null, "Sửa  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
@@ -58,7 +57,7 @@ public class CertificatesBLL {
                 dal.deleteCertificates(ID);
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Xóa thất bại");
+                JOptionPane.showMessageDialog(null, "Xóa  thất bại!!.ERROR:"+ex);
             }
         
 

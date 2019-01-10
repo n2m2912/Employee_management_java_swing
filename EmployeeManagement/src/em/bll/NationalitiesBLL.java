@@ -34,11 +34,11 @@ public class NationalitiesBLL {
 
         try {
             dal.addNewNationalities(model); // ham insert 
-            JOptionPane.showMessageDialog(null, "Thêm thành công");
+            JOptionPane.showMessageDialog(null, "Thêm  thành công");
             return 1;  // thanh cong 
-
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Thêm thất bại");
+            JOptionPane.showMessageDialog(null, "Thêm  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
@@ -46,10 +46,9 @@ public class NationalitiesBLL {
         try {
            
             dal.editNationalities(nationalitys);
-            JOptionPane.showMessageDialog(null, "Sửa thành công");
             return 1;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sửa thất bại");
+            JOptionPane.showMessageDialog(null, "Sửa  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
@@ -59,7 +58,7 @@ public class NationalitiesBLL {
                 dal.deleteNationalities(ID);
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Xóa thất bại");
+                JOptionPane.showMessageDialog(null, "Xóa  thất bại!!.ERROR:"+ex);
             }
         
 

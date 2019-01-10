@@ -39,7 +39,7 @@ public class ForeignLanguageBLL {
             return 1;  // thanh cong 
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Thêm thất bại");
+            JOptionPane.showMessageDialog(null, "Thêm  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
@@ -47,10 +47,9 @@ public class ForeignLanguageBLL {
         try {
            
             dal.editForeignLanguages(fLangs);
-            JOptionPane.showMessageDialog(null, "Sửa thành công");
             return 1;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sửa thất bại");
+            JOptionPane.showMessageDialog(null, "Sửa  thất bại!!.ERROR:"+ex);
             return 0;
         }
     }
@@ -60,7 +59,7 @@ public class ForeignLanguageBLL {
                 dal.deleteForeignLanguages(ID);
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Xóa thất bại");
+                JOptionPane.showMessageDialog(null, "Xóa  thất bại!!.ERROR:"+ex);
             }
         
 

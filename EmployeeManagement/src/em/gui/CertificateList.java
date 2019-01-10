@@ -71,11 +71,12 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         tbCertificates = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(490, 300));
+        setPreferredSize(new java.awt.Dimension(487, 329));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar1.setRollover(true);
 
+        btNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/add item.png"))); // NOI18N
         btNew.setText("Thêm ");
         btNew.setFocusable(false);
         btNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -88,6 +89,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         jToolBar1.add(btNew);
         jToolBar1.add(jSeparator1);
 
+        btEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/edit item.png"))); // NOI18N
         btEdit.setText("Sửa");
         btEdit.setFocusable(false);
         btEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -100,6 +102,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         jToolBar1.add(btEdit);
         jToolBar1.add(jSeparator2);
 
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/delete item.png"))); // NOI18N
         btDelete.setText("Xóa");
         btDelete.setFocusable(false);
         btDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -112,6 +115,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         jToolBar1.add(btDelete);
         jToolBar1.add(jSeparator3);
 
+        btPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/printLarge.png"))); // NOI18N
         btPrint.setText("In");
         btPrint.setFocusable(false);
         btPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -119,6 +123,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         jToolBar1.add(btPrint);
         jToolBar1.add(jSeparator4);
 
+        btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/logoutLarge.png"))); // NOI18N
         btExit.setText("Thoát");
         btExit.setFocusable(false);
         btExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -130,7 +135,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
         });
         jToolBar1.add(btExit);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 25));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, -1));
 
         tbCertificates.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,7 +155,7 @@ public class CertificateList extends javax.swing.JFrame implements WindowListene
             tbCertificates.getColumnModel().getColumn(1).setPreferredWidth(200);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 480, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 480, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

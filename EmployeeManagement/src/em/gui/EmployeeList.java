@@ -6,8 +6,8 @@
 
 package em.gui;
 
-import em.bll.EmployeeBLL;
-import em.dto.Employees;
+import em.bll.*;
+import em.dto.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -33,6 +33,9 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
     String id = "";
     DefaultTableModel model;
     EmployeeBLL bll = new EmployeeBLL();
+    PositionBLL posBll = new PositionBLL();
+    EmployeeTypeBLL emTyBll = new EmployeeTypeBLL();
+    DepartmentBLL depBll = new DepartmentBLL();
     /** Creates new form EmployeeList */
     public EmployeeList() {
         initComponents();
@@ -73,10 +76,12 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         tbEmployees = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(835, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar1.setRollover(true);
 
+        btNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/addPeople.png"))); // NOI18N
         btNew.setText("Thêm ");
         btNew.setFocusable(false);
         btNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -89,6 +94,7 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         jToolBar1.add(btNew);
         jToolBar1.add(jSeparator1);
 
+        btEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/editPeople.png"))); // NOI18N
         btEdit.setText("Sửa");
         btEdit.setFocusable(false);
         btEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -101,6 +107,7 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         jToolBar1.add(btEdit);
         jToolBar1.add(jSeparator2);
 
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/delete item.png"))); // NOI18N
         btDelete.setText("Xóa");
         btDelete.setFocusable(false);
         btDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -113,6 +120,7 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         jToolBar1.add(btDelete);
         jToolBar1.add(jSeparator3);
 
+        btPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/printLarge.png"))); // NOI18N
         btPrint.setText("In");
         btPrint.setFocusable(false);
         btPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -120,6 +128,7 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         jToolBar1.add(btPrint);
         jToolBar1.add(jSeparator4);
 
+        btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/logoutLarge.png"))); // NOI18N
         btExit.setText("Thoát");
         btExit.setFocusable(false);
         btExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -131,14 +140,14 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         });
         jToolBar1.add(btExit);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 25));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 80));
 
         tbEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã ", "Họ tên", "Giới tính", "Ngày sinh", "Nơi sinh"
+                "Mã ", "Họ tên", "Giới tính", "Năm sinh", "Email", "SĐT"
             }
         ));
         tbEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,11 +157,12 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
         });
         jScrollPane1.setViewportView(tbEmployees);
         if (tbEmployees.getColumnModel().getColumnCount() > 0) {
-            tbEmployees.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tbEmployees.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tbEmployees.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tbEmployees.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tbEmployees.getColumnModel().getColumn(2).setPreferredWidth(5);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 830, 450));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 830, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,7 +225,9 @@ public class EmployeeList extends javax.swing.JFrame implements WindowListener{
                 model.setValueAt(emp.getDateOfBirth(),row,3);
             }else
                 model.setValueAt(mdyFormat.format(emp.getDateOfBirth()),row,3);
-            model.setValueAt(emp.getPlaceOfBirth(),row,4);
+            
+            model.setValueAt(emp.getEmail(),row,4);
+            model.setValueAt(emp.getMobileNumber(),row,5);
             row++;
         } 
     }

@@ -320,8 +320,8 @@ public class Employee extends javax.swing.JFrame {
         jdcDateOfBirth = new com.toedter.calendar.JDateChooser();
         jdcDateOfIDRegister = new com.toedter.calendar.JDateChooser();
         cbProvince = new javax.swing.JComboBox<>();
-        btSave = new javax.swing.JButton();
         btCancel = new javax.swing.JButton();
+        btSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 255));
@@ -973,19 +973,21 @@ public class Employee extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         jPanel1.add(cbProvince, gridBagConstraints);
 
-        btSave.setBackground(new java.awt.Color(0, 255, 0));
-        btSave.setText("Lưu");
-        btSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSaveActionPerformed(evt);
-            }
-        });
-
-        btCancel.setBackground(new java.awt.Color(255, 0, 0));
+        btCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/delete item.png"))); // NOI18N
         btCancel.setText("Hủy");
         btCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelActionPerformed(evt);
+            }
+        });
+
+        btSave.setBackground(new java.awt.Color(255, 255, 255));
+        btSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/em/images/editPeople.png"))); // NOI18N
+        btSave.setText("Lưu");
+        btSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSaveActionPerformed(evt);
             }
         });
 
@@ -994,29 +996,29 @@ public class Employee extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(553, Short.MAX_VALUE)
-                .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(btCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addContainerGap(574, Short.MAX_VALUE)
+                .addComponent(btSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btCancel)
+                .addGap(14, 14, 14))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(475, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(487, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btSave)
+                    .addComponent(btCancel))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE)))
+                    .addContainerGap(86, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1027,7 +1029,9 @@ public class Employee extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1055,10 +1059,6 @@ public class Employee extends javax.swing.JFrame {
         }
         
         String fullName = txtFullName.getText();
-        if(fullName.matches(".*\\d+.*")){
-            JOptionPane.showMessageDialog(null, "Tên không chứa số");
-            error = true;
-        }
         if(fullName.isEmpty()){
             JOptionPane.showMessageDialog(null, "Tên không được rỗng");
             error = true;
@@ -1116,6 +1116,7 @@ public class Employee extends javax.swing.JFrame {
         item = (Item) cbJob.getSelectedItem();
         Jobs job = new Jobs(item.getId());
         item = (Item) cbPosition.getSelectedItem();
+        System.out.println(item.getId());
         Positions position = new Positions(item.getId());
         BigInteger basicSalary = BigInteger.valueOf(0);
         if(txtBasicSalary.getText().isEmpty()){
@@ -1225,7 +1226,9 @@ public class Employee extends javax.swing.JFrame {
         }else{
             model.setValueAt(mdyFormat.format(emp.getDateOfBirth()), row, 3);
         }
-        model.setValueAt(emp.getPlaceOfBirth(),row,4);
+        
+        model.setValueAt(emp.getEmail(),row,4);
+        model.setValueAt(emp.getMobileNumber(),row,5);
         EmployeeList.btE.setEnabled(false);
     }
     /**
