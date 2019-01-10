@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="EmployeeManagementPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>em.dto.EmployeeTypes</class>
+    <class>em.dto.Folks</class>
+    <class>em.dto.Nationalities</class>
+    <class>em.dto.ItCertificates</class>
+    <class>em.dto.Jobs</class>
+    <class>em.dto.ForeignLanguages</class>
+    <class>em.dto.Certificates</class>
+    <class>em.dto.Departments</class>
+    <class>em.dto.Provinces</class>
+    <class>em.dto.Religions</class>
+    <class>em.dto.Positions</class>
+    <class>em.dto.Knowledges</class>
+    <class>em.dto.Employees</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/employee_management?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>
